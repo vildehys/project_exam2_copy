@@ -1,0 +1,85 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Dosis", sans-serif;
+}
+
+header {
+  background-color: #766870;
+  box-shadow: inset 0 0 10px;
+}
+.logo {
+  max-width: 50px;
+  margin-top: 5px;
+  height: 50px;
+}
+nav {
+  display: flex;
+}
+
+nav ul {
+  padding: 9px;
+}
+
+nav li {
+  display: block;
+}
+
+nav a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: white;
+  padding: 10px;
+  display: block;
+  font-family: "Dosis", sans-serif;
+}
+
+nav a:hover {
+  color: #92a0c4;
+}
+
+nav,
+#hamburger-menu {
+  display: none;
+}
+
+.hamburger-label {
+  float: right;
+  color: white;
+  padding: 10px;
+  display: block;
+}
+
+#hamburger-menu:checked ~ nav {
+  display: block;
+}
+
+@media (min-width: 730px) {
+  .logo {
+    max-width: 100px;
+    margin-top: 10px;
+  }
+
+  header {
+    display: block;
+    text-align: center;
+  }
+
+  nav {
+    display: block;
+    align-items: baseline;
+  }
+
+  .hamburger-label {
+    display: none;
+  }
+
+  ul {
+    display: flex;
+    justify-content: center;
+  }
+
+  li {
+    display: inline-block;
+  }
+}

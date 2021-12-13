@@ -1,0 +1,219 @@
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'Dosis', sans-serif;
+
+}
+
+
+.container {
+  text-align: center;
+}
+
+
+.image1, .image2, .image3 {
+  height: 170px;
+  width: 180px;
+  margin-top: 75px;
+
+}
+
+.prev, .next {
+  font-size: 4rem;
+  color: #92A0C4;
+}
+
+.prev {
+  float: left;
+  
+}
+
+.next {
+  float: right;
+}
+
+
+.mySlides {
+  text-decoration: none;
+  display: flex;
+}
+
+.slideshow-container {
+  text-align: center;
+
+}
+
+.blogposts img {
+  height: 100px;
+  width: 100px;
+  padding: 0px;
+  margin: 0px 10px;
+}
+
+
+.index-text {
+  background-color:#C6BBB9;
+  text-align: center;
+  color: white;
+  padding: 20px;
+  margin-top: 150px;
+}
+
+
+.index-button {
+  padding: 5px 15px;
+  background-color: #92A0C4;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0.3, 0.8);
+  cursor: pointer;
+  border-radius: 5px;
+  color: white; 
+  text-decoration: none;
+  margin-top: 20px;
+}
+
+.index-button:hover {
+  background-color: #D17884;
+  font-weight: 600;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+
+h1 {
+  text-align: center;
+  margin-top: 50px;
+  padding: 50px;
+  color: #201F41;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0.3, 0.8);
+  font-size: 1.5rem;
+
+}
+
+h2 {
+  font-size: 1rem;
+  color: #201F41
+}
+
+
+p {
+  font-size: 0.8rem;
+  color: #201F41;
+  max-width: 250px;
+  margin: 0 auto;
+}
+
+
+.index-p {
+  font-size: 2rem;
+  color: white;
+}
+
+a {
+  color: #201F41;
+}
+
+footer {
+  background-color: #5B6469;
+  margin-top: 100px;
+  justify-content: center;
+  padding: 30px;
+  text-align: center;
+  color: white;
+
+}
+
+.socials {
+  font-size: 25px;
+}
+
+
+
+@media (min-width: 730px) {
+  
+
+  .blogposts img {
+    height: 200px;
+    width: 200px;
+    padding: 0px;
+    margin: 0px 10px;
+    }
+
+    .image1, .image2, .image3 {
+      height: 240px;
+      width: 250px;
+      margin-top: 100px;
+    
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      justify-content: space-evenly;
+      text-align: center;
+      margin-top: 150px;
+    
+    }
+
+    .index-image, .filter {
+      height: 60vh;
+    }
+
+ 
+
+    .text-field {
+      padding: 80px;
+      
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    h2 {
+      font-size: 1.2rem
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
+
+
+
+@media (min-width: 1200px) {
+  .blogposts img {
+    height: 300px;
+    width: 300px;
+    padding: 0px;
+    margin: 0px 10px;
+    }
+
+    .index-image, .filter {
+      height: 80vh;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Kodet i minste media query = 375 px. Utvid bilder px osv neste steg på 600px, og deretter på ca 1000. 
+
+

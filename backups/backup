@@ -1,0 +1,300 @@
+post.js
+
+const blogPost = document.querySelector(".container");
+const queryString = document.location.search;
+const params = new URLSearchParams(queryString);
+const id = params.get("id");
+const url = "https://vhys.one/wp-json/wc/store/products/";
+
+
+async function fetchPost() {
+
+    try {
+        
+
+    const response = await fetch(url + id);
+
+    const specifics = await response.json();
+    
+
+    console.log(specifics);
+
+    createHtml(specifics);
+
+}
+
+catch(error) {
+    console.log(error);
+    blogPost.innerHTML = message("error", error);
+    }
+}
+
+fetchPost()
+
+
+function createHtml(info) {
+
+    blogPost.innerHTML = `
+    <div class="post">
+    <h1>This weeks horoscope</h1>
+    <div class="comments">
+    <h2> 25/11-21 </h2>
+    <h2> 3 comments </h2>
+    </div>
+    <div><img class="image" src="${info.images[0].src}"</div>
+    <h3 class="text">${info.description}</h3>
+
+      </div>  `;
+                            
+    
+}
+
+POST html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="horoscrope, astrology, tarot, rising, sun, moon, planets, crystals, starsign, zodiac">
+    <meta name="description" content="Blog about horoscope, the different zodiac signs and other astrology related themes. Post specific page"/>
+    <title>World of Astrology - Post </title>
+    <link rel="icon" href="data:;base64,="/>
+    <link href="css/navbar.css" rel="stylesheet" />
+    <link href="css/post.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/3ddee7a10c.js" crossorigin="anonymous"></script>
+    <style> @import url('https://fonts.googleapis.com/css2?family=Dosis&family=Oswald:wght@200&display=swap');</style> 
+<!-- Hotjar Tracking Code for https://affectionate-lamarr-69754c.netlify.app/contact.html -->
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:2732351,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+</head>
+<body>
+    <header>
+        <a href="index.html"><img src="images/logo.png" class="logo"></a>
+        <label class="hamburger-label" for="hamburger-menu"><i class="fas fa fa-bars"></i></i></label>
+        <input type="checkbox" id="hamburger-menu">
+        <nav>
+            <ul>
+                <li><a href="about.html">About</a></li>
+                <li><a href="#">Tarot</a></li>
+                <li><a href="#">Zodiac</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="archive.html">Archive</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="body-content">
+
+    <div class="container"></div>
+
+    <div class="caption">
+        <div class="arrows">
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-right"></i>
+            </div>
+    </div>
+
+    <script src="js/post.js"></script>
+
+</div>
+
+    </body>
+    <footer>
+        <div class="socials">
+            <i class="fab fa-facebook-square"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-twitter-square"></i>
+            <i class="fas fa-envelope"></i>
+        </div>
+        <h6> Copyright @ 2021, Astrology World. <br> All rights reserved. </h6>  
+    </footer>
+    </html>
+
+
+
+ARCHIVE js
+
+const url = "https://vhys.one/wp-json/wc/store/products?per_page=100";
+async function fetchDetails() {
+    const response = await fetch(url);
+    const data = await response.json();
+    generateDivs(data);
+}
+
+function generateDivs(jsonData) {
+    let containterTag = document.getElementsByClassName("container");
+    let counter = 0 
+
+    jsonData.forEach(function(item, index) {
+        let blogPostDiv = document.createElement("div");
+        blogPostDiv.className = "blogposts";
+
+        if (counter > 9) {
+          blogPostDiv.style = "display: none;";
+       }
+
+        let imageTag = document.createElement("img");
+        imageTag.src = item.images[0].src;
+        imageTag.className = "modal-target";
+        imageTag.alt = item.short_description.replace(/<\/?[^>]+(>|$)/g, "");
+        blogPostDiv.appendChild(imageTag);
+
+        let pictureNameTag = document.createElement("h1");
+        pictureNameTag.innerHTML = item.name
+        blogPostDiv.appendChild(pictureNameTag);        
+
+        let descriptionTag = document.createElement("p");
+        descriptionTag.innerHTML = item.short_description.replace(/<\/?[^>]+(>|$)/g, "");
+        blogPostDiv.appendChild(descriptionTag);
+
+        let buttonTag = document.createElement("a");
+        buttonTag.className = "button";
+        buttonTag.href = `post.html?id=${item.id}`;
+        buttonTag.innerHTML = "View More";
+        blogPostDiv.appendChild(buttonTag);
+
+        containterTag[0].appendChild(blogPostDiv);
+        counter += 1
+    });
+
+    var modal = document.getElementById("modal");
+    var modalClose = document.getElementById("modal-close");
+
+    modalClose.addEventListener("click", function() {
+        modal.style.display = "none";
+    });
+
+    document.onkeydown = function({
+        keyCode
+    }) {
+        if (keyCode === 27) {
+            modal.style.display = "none";
+        }
+    };
+
+    document.addEventListener("click", function(e) {
+        if (e.target.className.indexOf("modal-target") !== -1) {
+            var img = e.target;
+            var modalImg = document.getElementById("modal-content");
+            var captionText = document.getElementById("modal-caption");
+            modal.style.display = "block";
+            modalImg.src = img.src;
+            captionText.innerHTML = img.alt;
+        }
+        if (e.target === modal) {
+            modal.style.display = "none";
+        }
+
+    });
+}
+
+function viewMorePosts() {
+  var blogPostDivs = document.querySelectorAll('[style="display: none;"]')
+  let counter = 0
+
+  for (let i = 0; i < blogPostDivs.length; i++) {
+      if (blogPostDivs[i].style.display === "none" && counter < 2) {
+         blogPostDivs[i].style.display = "";
+         counter += 1
+      }
+  }
+
+  if (document.querySelectorAll('[style="display: none;"]').length === 0) {
+     var moreButton = document.getElementById("myBtn")
+     moreButton.style = "display: none;";
+  }
+}
+
+fetchDetails();
+
+
+ARHIVE html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="horoscrope, astrology, tarot, rising, sun, moon, planets, crystals, starsign, zodiac">
+    <meta name="description" content="Blog about horoscope, the different zodiac signs and other astrology related themes. Archive overview page"/>
+
+    <title>World of Astrology - Archive </title>
+    <link rel="icon" href="data:;base64,="/>
+    <link href="css/navbar.css" rel="stylesheet" />
+    <link href="css/archive.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/3ddee7a10c.js" crossorigin="anonymous"></script>
+    <style> @import url('https://fonts.googleapis.com/css2?family=Dosis&family=Oswald:wght@200&display=swap');</style>
+<!-- Hotjar Tracking Code for https://affectionate-lamarr-69754c.netlify.app/contact.html -->
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:2732351,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+</head>
+<body>
+    <header>
+        <a href="index.html"><img src="images/logo.png" class="logo"></a>
+        <label class="hamburger-label" for="hamburger-menu"><i class="fas fa fa-bars"></i></i></label>
+        <input type="checkbox" id="hamburger-menu">
+        <nav>
+            <ul>
+                <li><a href="about.html">About</a></li>
+                <li><a href="#">Tarot</a></li>
+                <li><a href="#">Zodiac</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="archive.html" class="active">Archive</a></li>
+            </ul>
+        </nav>
+    </header>
+    <h1>Browse our archive for previous blogposts</h1>
+    
+    <section class="content">
+        <h2>Lorem ipsum</h2>
+    </section>
+
+    <div id="modal" class="modal">
+        <span id="modal-close" class="modal-close">&times;</span>
+        <img id="modal-content" class="modal-content" />
+        <div id="modal-caption" class="modal-caption"></div>
+    </div>
+    
+    <section class="container"></section>
+    <div class="button2">
+    <a class="button" onclick="viewMorePosts()" id="myBtn" >View more Blog Posts</a></div>
+
+
+
+    <script src="js/archive.js"></script>
+
+    </body>
+
+    <footer>
+        <div class="socials">
+            <i class="fab fa-facebook-square"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-twitter-square"></i>
+            <i class="fas fa-envelope"></i>
+        </div>
+        <h6> Copyright @ 2021, Astrology World. <br> All rights reserved. </h6>  
+    </footer>
+    </html>
+
+
+    INDEX js
+
+    
