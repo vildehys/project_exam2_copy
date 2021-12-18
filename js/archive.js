@@ -20,7 +20,7 @@ function generateDivs(jsonData) {
         let imageTag = document.createElement("img");
         imageTag.src = item._embedded["wp:featuredmedia"][0].source_url 
         imageTag.className = "modal-target";
-        imageTag.alt = item.title.rendered.replace(/<\/?[^>]+(>|$)/g, "");
+        imageTag.alt = item.excerpt.rendered.replace(/<\/?[^>]+(>|$)/g, "");
         blogPostDiv.appendChild(imageTag);
 
         let pictureNameTag = document.createElement("h1");
