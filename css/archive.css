@@ -14,8 +14,9 @@
   grid-template-rows: repeat;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   justify-items: center;
-  margin-top: 7rem;
   text-align: center;
+  width: 90%;
+  margin: 0 auto;
 }
 
 .blogposts {
@@ -29,12 +30,14 @@ h1 {
   text-align: center;
   margin-top: 50px;
   font-size: 1.5rem;
+  text-decoration: underline;
 }
 
 h2 {
   text-align: center;
   margin-top: 100px;
   background-color: #92a0c4;
+  margin-bottom: 50px;
   color: white;
   padding: 20px;
 }
