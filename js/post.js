@@ -27,7 +27,7 @@ function createHtml(info) {
     <h2> 3 comments </h2>
     </div>
     <img src="${info[0]._embedded["wp:featuredmedia"][0].source_url}" alt="">
-    <p class="text" src="${info[0].content.rendered}"</p>
+    <p class="text" src="${info[0].content.rendered}</p>
 
       </div>  `;
 }

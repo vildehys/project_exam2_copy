@@ -16,7 +16,7 @@
 }
 
 .text {
-  font-size: 0.8rem;
+  font-size: 1.2rem;
   margin-top: 15px;
 }
 
@@ -47,10 +47,6 @@ h1 {
   border-bottom-style: solid;
 }
 
-p {
-  font-size: 0.8rem;
-}
-
 footer {
   background-color: #5b6469;
   margin-top: 100px;
@@ -77,10 +73,6 @@ footer {
   h1 {
     font-size: 1.7rem;
   }
-
-  p {
-    font-size: 1rem;
-  }
 }
 
 @media (min-width: 1000px) {
@@ -95,10 +87,6 @@ footer {
 
   h1 {
     font-size: 2rem;
-  }
-
-  p {
-    font-size: 1.2rem;
   }
 }
 
